@@ -1,0 +1,89 @@
+/* Базові налаштування */
+body {
+	margin: 0;
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+	background-color: #f4f7f6;
+	color: #333;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+}
+
+.app-container {
+	background: white;
+	padding: 30px;
+	border-radius: 12px;
+	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+	width: 100%;
+	max-width: 600px;
+	text-align: center;
+}
+
+.app-header h1 {
+	color: #2c3e50;
+	margin-top: 0;
+	border-bottom: 2px solid #ecf0f1;
+	padding-bottom: 15px;
+}
+
+/* Стилі для Quiz */
+.progress-bar {
+	font-size: 0.9rem;
+	color: #7f8c8d;
+	margin-bottom: 20px;
+	font-weight: bold;
+}
+
+.question-text {
+	font-size: 1.3rem;
+	margin-bottom: 30px;
+	line-height: 1.4;
+}
+
+.options-container {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+}
+
+.option-button {
+	background-color: #f8f9fa;
+	border: 2px solid #e9ecef;
+	padding: 15px;
+	border-radius: 8px;
+	font-size: 1rem;
+	cursor: pointer;
+	transition: all 0.2s ease;
+	text-align: left;
+}
+
+.option-button:hover {
+	background-color: #e3f2fd;
+	border-color: #90caf9;
+}
+
+/* Стилі для результатів */
+.result-screen h2 {
+	color: #27ae60;
+}
+
+.result-screen p {
+	font-size: 1.2rem;
+}
+
+.restart-btn {
+	margin-top: 20px;
+	background-color: #3498db;
+	color: white;
+	border: none;
+	padding: 12px 25px;
+	font-size: 1.1rem;
+	border-radius: 8px;
+	cursor: pointer;
+	transition: background 0.2s;
+}
+
+.restart-btn:hover {
+	background-color: #2980b9;
+}
