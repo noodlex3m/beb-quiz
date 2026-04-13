@@ -1,36 +1,101 @@
+/* ЗМІННІ ДЛЯ КОЛЬОРІВ (СВІТЛА ТЕМА ЗА ЗАМОВЧУВАННЯМ) */
+:root {
+	--bg-color: #f4f7f6;
+	--card-bg: #ffffff;
+	--text-color: #333333;
+	--text-muted: #7f8c8d;
+	--border-color: #ecf0f1;
+	--btn-bg: #f8f9fa;
+	--btn-border: #e9ecef;
+	--btn-hover-bg: #e3f2fd;
+	--btn-hover-border: #90caf9;
+	--correct-bg: #d4edda;
+	--correct-border: #c3e6cb;
+	--correct-text: #155724;
+	--incorrect-bg: #f8d7da;
+	--incorrect-border: #f5c6cb;
+	--incorrect-text: #721c24;
+}
+
+/* ЗМІННІ ДЛЯ ТЕМНОЇ ТЕМИ */
+[data-theme="dark"] {
+	--bg-color: #121212;
+	--card-bg: #1e1e1e;
+	--text-color: #e0e0e0;
+	--text-muted: #a0a0a0;
+	--border-color: #333333;
+	--btn-bg: #2d2d2d;
+	--btn-border: #404040;
+	--btn-hover-bg: #3d4a5d;
+	--btn-hover-border: #5b7a9e;
+	--correct-bg: #1e4620;
+	--correct-border: #2e6b32;
+	--correct-text: #81c784;
+	--incorrect-bg: #4a191c;
+	--incorrect-border: #73262a;
+	--incorrect-text: #e57373;
+}
+
 /* Базові налаштування */
 body {
 	margin: 0;
 	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-	background-color: #f4f7f6;
-	color: #333;
+	background-color: var(--bg-color);
+	color: var(--text-color);
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	min-height: 100vh;
+	transition: background-color 0.3s ease; /* Плавний перехід фону */
 }
 
 .app-container {
-	background: white;
+	background: var(--card-bg);
 	padding: 30px;
 	border-radius: 12px;
-	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 	width: 100%;
 	max-width: 600px;
 	text-align: center;
+	transition:
+		background-color 0.3s ease,
+		color 0.3s ease;
+}
+
+.app-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: 2px solid var(--border-color);
+	padding-bottom: 15px;
+	margin-bottom: 20px;
 }
 
 .app-header h1 {
-	color: #2c3e50;
-	margin-top: 0;
-	border-bottom: 2px solid #ecf0f1;
-	padding-bottom: 15px;
+	margin: 0;
+	font-size: 1.8rem;
+}
+
+/* Кнопка перемикання теми */
+.theme-toggle {
+	background: none;
+	border: 1px solid var(--border-color);
+	color: var(--text-color);
+	padding: 8px 12px;
+	border-radius: 8px;
+	cursor: pointer;
+	font-size: 1rem;
+	transition: all 0.2s ease;
+}
+
+.theme-toggle:hover {
+	background: var(--btn-hover-bg);
 }
 
 /* Стилі для Quiz */
 .progress-bar {
 	font-size: 0.9rem;
-	color: #7f8c8d;
+	color: var(--text-muted);
 	margin-bottom: 20px;
 	font-weight: bold;
 }
@@ -48,8 +113,9 @@ body {
 }
 
 .option-button {
-	background-color: #f8f9fa;
-	border: 2px solid #e9ecef;
+	background-color: var(--btn-bg);
+	border: 2px solid var(--btn-border);
+	color: var(--text-color);
 	padding: 15px;
 	border-radius: 8px;
 	font-size: 1rem;
@@ -58,14 +124,33 @@ body {
 	text-align: left;
 }
 
-.option-button:hover {
-	background-color: #e3f2fd;
-	border-color: #90caf9;
+.option-button:hover:not(:disabled) {
+	background-color: var(--btn-hover-bg);
+	border-color: var(--btn-hover-border);
+}
+
+/* --- СТИЛІ ДЛЯ ФІДБЕКУ --- */
+.option-button:disabled {
+	cursor: not-allowed;
+	opacity: 0.9;
+}
+
+.option-button.correct {
+	background-color: var(--correct-bg) !important;
+	border-color: var(--correct-border) !important;
+	color: var(--correct-text) !important;
+	font-weight: bold;
+}
+
+.option-button.incorrect {
+	background-color: var(--incorrect-bg) !important;
+	border-color: var(--incorrect-border) !important;
+	color: var(--incorrect-text) !important;
 }
 
 /* Стилі для результатів */
 .result-screen h2 {
-	color: #27ae60;
+	color: var(--correct-text);
 }
 
 .result-screen p {
@@ -86,27 +171,4 @@ body {
 
 .restart-btn:hover {
 	background-color: #2980b9;
-}
-
-/* --- НОВІ СТИЛІ ДЛЯ ФІДБЕКУ --- */
-
-/* Вимикаємо ефект наведення на кнопку під час перевірки */
-.option-button:disabled {
-	cursor: not-allowed;
-	opacity: 0.9;
-}
-
-/* Правильна відповідь (Зелена) */
-.option-button.correct {
-	background-color: #d4edda;
-	border-color: #c3e6cb;
-	color: #155724;
-	font-weight: bold;
-}
-
-/* Неправильна відповідь (Червона) */
-.option-button.incorrect {
-	background-color: #f8d7da;
-	border-color: #f5c6cb;
-	color: #721c24;
 }
