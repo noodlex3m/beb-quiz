@@ -2,38 +2,50 @@ import { useState } from "react";
 import questionsData from "../data/questions.json";
 
 function Quiz() {
-	// Створюємо "стани" (state) для нашого додатку
-	const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0); // Номер поточного питання
-	const [score, setScore] = useState(0); // Кількість правильних відповідей
-	const [showResult, setShowResult] = useState(false); // Чи показувати екран результатів
+	const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+	const [score, setScore] = useState(0);
+	const [showResult, setShowResult] = useState(false);
 
-	// Беремо поточне питання з нашого масиву
+	// НОВІ СТАНИ: для збереження вибраної відповіді та паузи
+	const [selectedAnswer, setSelectedAnswer] = useState(null);
+	const [isChecking, setIsChecking] = useState(false);
+
 	const currentQuestion = questionsData[currentQuestionIndex];
 
-	// Функція, яка спрацьовує при кліку на варіант відповіді
-	const handleAnswerClick = (selectedOption) => {
-		// Перевіряємо, чи правильна відповідь
-		if (selectedOption === currentQuestion.correctAnswer) {
-			setScore(score + 1); // Додаємо 1 бал
+	const handleAnswerClick = (option) => {
+		// Якщо ми вже перевіряємо відповідь, ігноруємо подальші кліки
+		if (isChecking) return;
+
+		setSelectedAnswer(option);
+		setIsChecking(true);
+
+		if (option === currentQuestion.correctAnswer) {
+			setScore(score + 1);
 		}
 
-		// Переходимо до наступного питання або показуємо результат
-		const nextQuestionIndex = currentQuestionIndex + 1;
-		if (nextQuestionIndex < questionsData.length) {
-			setCurrentQuestionIndex(nextQuestionIndex);
-		} else {
-			setShowResult(true);
-		}
+		// Робимо паузу 1.5 секунди перед переходом далі
+		setTimeout(() => {
+			const nextQuestionIndex = currentQuestionIndex + 1;
+			if (nextQuestionIndex < questionsData.length) {
+				setCurrentQuestionIndex(nextQuestionIndex);
+			} else {
+				setShowResult(true);
+			}
+
+			// Скидаємо стани для наступного питання
+			setSelectedAnswer(null);
+			setIsChecking(false);
+		}, 1500); // 1500 мілісекунд = 1.5 секунди
 	};
 
-	// Функція для перезапуску тесту
 	const restartQuiz = () => {
 		setCurrentQuestionIndex(0);
 		setScore(0);
 		setShowResult(false);
+		setSelectedAnswer(null);
+		setIsChecking(false);
 	};
 
-	// Якщо тест завершено, показуємо цей блок (ResultScreen)
 	if (showResult) {
 		return (
 			<div className="result-screen">
@@ -49,7 +61,6 @@ function Quiz() {
 		);
 	}
 
-	// Якщо тест триває, показуємо картку з питанням (QuestionCard + ProgressBar)
 	return (
 		<div className="quiz-container">
 			<div className="progress-bar">
@@ -59,15 +70,30 @@ function Quiz() {
 			<h2 className="question-text">{currentQuestion.question}</h2>
 
 			<div className="options-container">
-				{currentQuestion.options.map((option, index) => (
-					<button
-						key={index}
-						className="option-button"
-						onClick={() => handleAnswerClick(option)}
-					>
-						{option}
-					</button>
-				))}
+				{currentQuestion.options.map((option, index) => {
+					// Логіка підсвічування: за замовчуванням клас звичайний
+					let buttonClass = "option-button";
+
+					// Якщо йде перевірка, додаємо класи
+					if (isChecking) {
+						if (option === currentQuestion.correctAnswer) {
+							buttonClass += " correct"; // Правильна відповідь ЗАВЖДИ зелена
+						} else if (option === selectedAnswer) {
+							buttonClass += " incorrect"; // Якщо ти вибрав неправильну - вона червона
+						}
+					}
+
+					return (
+						<button
+							key={index}
+							className={buttonClass}
+							onClick={() => handleAnswerClick(option)}
+							disabled={isChecking} // Вимикаємо кнопки під час паузи, щоб не "наклікати" зайвого
+						>
+							{option}
+						</button>
+					);
+				})}
 			</div>
 		</div>
 	);
