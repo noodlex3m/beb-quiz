@@ -10,6 +10,14 @@ function Quiz() {
 	const [selectedAnswer, setSelectedAnswer] = useState(null);
 	const [isChecking, setIsChecking] = useState(false);
 
+	// Зберігаємо перемішані варіанти у стані
+	const [shuffledOptions, setShuffledOptions] = useState(() => {
+		const firstQuestion = questionsData[0];
+		return firstQuestion
+			? [...firstQuestion.options].sort(() => Math.random() - 0.5)
+			: [];
+	});
+
 	const currentQuestion = questionsData[currentQuestionIndex];
 
 	const handleAnswerClick = (option) => {
@@ -28,6 +36,12 @@ function Quiz() {
 			const nextQuestionIndex = currentQuestionIndex + 1;
 			if (nextQuestionIndex < questionsData.length) {
 				setCurrentQuestionIndex(nextQuestionIndex);
+				// Перемішуємо варіанти для наступного питання
+				setShuffledOptions(
+					[...questionsData[nextQuestionIndex].options].sort(
+						() => Math.random() - 0.5,
+					),
+				);
 			} else {
 				setShowResult(true);
 			}
@@ -44,6 +58,10 @@ function Quiz() {
 		setShowResult(false);
 		setSelectedAnswer(null);
 		setIsChecking(false);
+		// Перемішуємо варіанти для першого питання при рестарті
+		setShuffledOptions(
+			[...questionsData[0].options].sort(() => Math.random() - 0.5),
+		);
 	};
 
 	if (showResult) {
@@ -67,10 +85,12 @@ function Quiz() {
 				Питання {currentQuestionIndex + 1} з {questionsData.length}
 			</div>
 
+			<div className="question-category">{currentQuestion.category}</div>
+
 			<h2 className="question-text">{currentQuestion.question}</h2>
 
 			<div className="options-container">
-				{currentQuestion.options.map((option, index) => {
+				{shuffledOptions.map((option, index) => {
 					// Логіка підсвічування: за замовчуванням клас звичайний
 					let buttonClass = "option-button";
 

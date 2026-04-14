@@ -1,11 +1,12 @@
 /* ЗМІННІ ДЛЯ КОЛЬОРІВ (СВІТЛА ТЕМА ЗА ЗАМОВЧУВАННЯМ) */
 :root {
-	--bg-color: #f4f7f6;
-	--card-bg: #ffffff;
+	--bg-gradient: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+	--card-bg: rgba(255, 255, 255, 0.85);
+	--card-backdrop: blur(10px);
 	--text-color: #333333;
 	--text-muted: #7f8c8d;
-	--border-color: #ecf0f1;
-	--btn-bg: #f8f9fa;
+	--border-color: rgba(236, 240, 241, 0.5);
+	--btn-bg: rgba(248, 249, 250, 0.8);
 	--btn-border: #e9ecef;
 	--btn-hover-bg: #e3f2fd;
 	--btn-hover-border: #90caf9;
@@ -19,12 +20,13 @@
 
 /* ЗМІННІ ДЛЯ ТЕМНОЇ ТЕМИ */
 [data-theme="dark"] {
-	--bg-color: #121212;
-	--card-bg: #1e1e1e;
+	--bg-gradient: linear-gradient(135deg, #1e130c 0%, #9a8478 100%);
+	--card-bg: rgba(30, 30, 30, 0.85);
+	--card-backdrop: blur(10px);
 	--text-color: #e0e0e0;
 	--text-muted: #a0a0a0;
-	--border-color: #333333;
-	--btn-bg: #2d2d2d;
+	--border-color: rgba(51, 51, 51, 0.5);
+	--btn-bg: rgba(45, 45, 45, 0.8);
 	--btn-border: #404040;
 	--btn-hover-bg: #3d4a5d;
 	--btn-hover-border: #5b7a9e;
@@ -37,29 +39,62 @@
 }
 
 /* Базові налаштування */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
 body {
 	margin: 0;
-	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-	background-color: var(--bg-color);
+	font-family: "Inter", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+	background: var(--bg-gradient);
 	color: var(--text-color);
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	min-height: 100vh;
-	transition: background-color 0.3s ease; /* Плавний перехід фону */
+	transition: background 0.5s ease;
+	padding: 20px; /* Відступи для мобільних екранів від країв */
 }
 
 .app-container {
 	background: var(--card-bg);
-	padding: 30px;
-	border-radius: 12px;
-	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+	backdrop-filter: var(--card-backdrop);
+	-webkit-backdrop-filter: var(--card-backdrop);
+	padding: 40px;
+	border-radius: 16px;
+	box-shadow:
+		0 15px 35px rgba(0, 0, 0, 0.2),
+		0 5px 15px rgba(0, 0, 0, 0.1);
+	border: 1px solid var(--border-color);
 	width: 100%;
 	max-width: 600px;
 	text-align: center;
 	transition:
 		background-color 0.3s ease,
-		color 0.3s ease;
+		color 0.3s ease,
+		transform 0.2s ease;
+}
+
+@media (max-width: 480px) {
+	.app-container {
+		padding: 20px;
+		border-radius: 12px;
+	}
+
+	.app-header h1 {
+		font-size: 1.4rem;
+	}
+
+	.question-text {
+		font-size: 1.15rem;
+	}
+
+	.option-button {
+		padding: 12px 15px;
+		font-size: 1rem;
+	}
 }
 
 .app-header {
@@ -116,17 +151,25 @@ body {
 	background-color: var(--btn-bg);
 	border: 2px solid var(--btn-border);
 	color: var(--text-color);
-	padding: 15px;
-	border-radius: 8px;
-	font-size: 1rem;
+	padding: 15px 20px;
+	border-radius: 12px;
+	font-size: 1.05rem;
+	font-weight: 500;
 	cursor: pointer;
-	transition: all 0.2s ease;
+	transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
 	text-align: left;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 .option-button:hover:not(:disabled) {
 	background-color: var(--btn-hover-bg);
 	border-color: var(--btn-hover-border);
+	transform: translateY(-2px);
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.option-button:active:not(:disabled) {
+	transform: translateY(1px);
 }
 
 /* --- СТИЛІ ДЛЯ ФІДБЕКУ --- */
@@ -171,4 +214,13 @@ body {
 
 .restart-btn:hover {
 	background-color: #2980b9;
+}
+
+.question-category {
+	font-size: 0.85rem;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	color: var(--text-muted);
+	margin-bottom: 10px;
+	font-weight: 600;
 }
