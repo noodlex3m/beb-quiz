@@ -136,6 +136,7 @@ body {
 }
 
 .question-text {
+	font-weight: 100 !important;
 	font-size: 1.3rem;
 	margin-bottom: 30px;
 	line-height: 1.4;
@@ -223,4 +224,246 @@ body {
 	color: var(--text-muted);
 	margin-bottom: 10px;
 	font-weight: 600;
+}
+
+/* --- ПОЯСНЕННЯ (EXPLANATION BOX) --- */
+.explanation-box {
+	margin-top: 25px;
+	text-align: left;
+	animation: slideDown 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.explanation-content {
+	background: var(--btn-bg);
+	border-left: 4px solid var(--btn-hover-border);
+	padding: 15px 20px;
+	border-radius: 8px;
+	font-size: 0.95rem;
+	line-height: 1.5;
+	box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
+	margin-bottom: 20px;
+}
+
+.explanation-content h3 {
+	margin-top: 0;
+	margin-bottom: 10px;
+	font-size: 1.05rem;
+	color: var(--text-color);
+}
+
+.explanation-content p {
+	margin: 0;
+	color: var(--text-color);
+	opacity: 0.9;
+}
+
+.next-btn {
+	background-color: var(--btn-hover-border);
+	color: #fff;
+	border: none;
+	padding: 12px 25px;
+	font-size: 1.1rem;
+	font-weight: bold;
+	border-radius: 8px;
+	cursor: pointer;
+	width: 100%;
+	transition: all 0.3s ease;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.next-btn:hover {
+	background-color: #3498db;
+	transform: translateY(-2px);
+	box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.next-btn:active {
+	transform: translateY(1px);
+}
+
+@keyframes slideDown {
+	from {
+		opacity: 0;
+		transform: translateY(-10px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+/* --- СТАРТОВИЙ ЕКРАН (START SCREEN) --- */
+.start-screen h2 {
+	margin-top: 0;
+	margin-bottom: 20px;
+}
+
+.progress-container {
+	margin-bottom: 25px;
+}
+
+.progress-bar-bg {
+	background-color: var(--btn-border);
+	border-radius: 20px;
+	height: 12px;
+	width: 100%;
+	overflow: hidden;
+	box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.progress-bar-fill {
+	background: linear-gradient(90deg, #4caf50, #81c784);
+	height: 100%;
+	border-radius: 20px;
+	transition: width 1s ease-in-out;
+}
+
+.progress-text {
+	font-size: 0.9rem;
+	color: var(--text-muted);
+	margin-top: 8px;
+	font-weight: 500;
+}
+
+.category-stats {
+	text-align: left;
+	background: var(--btn-bg);
+	border-radius: 12px;
+	padding: 15px;
+	margin-bottom: 25px;
+	border: 1px solid var(--border-color);
+	max-height: 250px;
+	overflow-y: auto;
+}
+
+.stat-row {
+	display: flex;
+	justify-content: space-between;
+	padding: 8px 0;
+	border-bottom: 1px solid var(--border-color);
+	font-size: 0.9rem;
+}
+
+.stat-row:last-child {
+	border-bottom: none;
+}
+
+.stat-title {
+	flex: 1;
+	padding-right: 15px;
+}
+
+.stat-count {
+	font-weight: bold;
+	color: var(--text-color);
+	white-space: nowrap;
+}
+
+.start-btn {
+	background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+	color: white;
+	border: none;
+	padding: 16px 20px;
+	font-size: 1.15rem;
+	font-weight: bold;
+	border-radius: 12px;
+	cursor: pointer;
+	width: 100%;
+	transition: all 0.3s ease;
+}
+
+.start-btn:hover:not(:disabled) {
+	background: linear-gradient(135deg, #2980b9 0%, #1f618d 100%);
+	transform: translateY(-2px);
+	box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+}
+
+.start-btn:disabled {
+	background: var(--btn-border);
+	color: var(--text-muted);
+	cursor: not-allowed;
+	box-shadow: none;
+}
+
+/* --- ЕКРАН РЕЗУЛЬТАТІВ (RESULT SCREEN) --- */
+.score-circle {
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	margin: 0 auto 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+	border: 8px solid;
+}
+
+.score-circle.passed {
+	border-color: #4caf50;
+	background: rgba(76, 175, 80, 0.1);
+}
+
+.score-circle.failed {
+	border-color: #e53935;
+	background: rgba(229, 57, 53, 0.1);
+}
+
+.score-percent {
+	font-size: 2.5rem;
+	font-weight: bold;
+}
+
+.score-text {
+	font-size: 1rem;
+	color: var(--text-muted);
+	margin-top: 5px;
+}
+
+.status-msg {
+	font-size: 1.4rem;
+	margin-bottom: 25px;
+}
+
+.passed-text {
+	color: #4caf50;
+}
+.failed-text {
+	color: #e53935;
+}
+
+.history-section {
+	margin-top: 35px;
+	border-top: 2px dashed var(--border-color);
+	padding-top: 20px;
+	text-align: left;
+}
+
+.history-section h3 {
+	margin-top: 0;
+	font-size: 1.1rem;
+	color: var(--text-muted);
+}
+
+.history-list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.history-list li {
+	display: flex;
+	justify-content: space-between;
+	background: var(--btn-bg);
+	padding: 10px 15px;
+	margin-bottom: 10px;
+	border-radius: 8px;
+	font-size: 0.95rem;
+}
+
+.history-date {
+	color: var(--text-muted);
+}
+.history-score {
+	color: var(--text-color);
+	font-weight: bold;
 }
