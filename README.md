@@ -19,7 +19,8 @@
 
 - **Фреймворк:** [React](https://react.dev/) (JavaScript)
 - **Збірка:** [Vite](https://vitejs.dev/)
-- **Стилізація:** CSS3 (CSS Variables, Flexbox)
+- **База даних:** Firebase Firestore (Хмарне зберігання бази питань)
+- **Стилізація:** CSS3 (CSS Variables, Flexbox, Glassmorphism)
 - **Деплой:** Netlify
 
 ## 🗺 Етапи розробки

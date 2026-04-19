@@ -1,11 +1,11 @@
-import { useState } from "react";
-import questionsRaw from "../data/questions.json";
+import { useState, useEffect } from "react";
 import { CATEGORY_TARGETS } from "../data/categoriesConfig";
 import StartScreen from "./screens/StartScreen";
 import ResultScreen from "./screens/ResultScreen";
 import QuestionCard from "./screens/QuestionCard";
+import { storageService } from "../services/storageService";
+import { firebaseService } from "../services/firebaseService";
 
-const questionsData = questionsRaw.filter((q) => q.question !== "");
 
 function Quiz() {
 	const [quizState, setQuizState] = useState("start"); // "start", "playing", "result"
@@ -13,14 +13,31 @@ function Quiz() {
 	const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 	const [score, setScore] = useState(0);
 	const [wrongAnswers, setWrongAnswers] = useState([]);
-	const [history, setHistory] = useState(() => {
-		try {
-			const savedHistory = localStorage.getItem("beb_quiz_results");
-			return savedHistory ? JSON.parse(savedHistory) : [];
-		} catch {
-			return [];
-		}
-	});
+	const [history, setHistory] = useState(storageService.getHistory());
+
+	// НОВІ СТАНИ ДЛЯ FIREBASE
+	const [questionsData, setQuestionsData] = useState([]); // Тут тепер зберігатимемо питання
+	const [isLoading, setIsLoading] = useState(true); // Стан завантаження
+
+	// Завантажуємо питання при першому запуску додатку
+	useEffect(() => {
+		const loadQuestions = async () => {
+			try {
+				const data = await firebaseService.fetchQuestions();
+				// Відфільтровуємо пусті питання (про всяк випадок, якщо вони є в базі)
+				const validQuestions = data.filter(
+					(q) => q.question && q.question.trim() !== "",
+				);
+				setQuestionsData(validQuestions);
+			} catch (error) {
+				console.error("Не вдалося завантажити питання:", error);
+			} finally {
+				setIsLoading(false);
+			}
+		};
+
+		loadQuestions();
+	}, []);
 
 	// Стан під час гри
 	const [selectedAnswer, setSelectedAnswer] = useState(null);
@@ -82,9 +99,8 @@ function Quiz() {
 			score: score,
 			total: examQuestions.length,
 		};
-		// Зберігаємо останніх 8 спроб
-		const updatedHistory = [newResult, ...history].slice(0, 8);
-		localStorage.setItem("beb_quiz_results", JSON.stringify(updatedHistory));
+		const updatedHistory = storageService.saveResult(newResult);
+
 		setHistory(updatedHistory);
 		setQuizState("result");
 	};
@@ -105,14 +121,28 @@ function Quiz() {
 		}
 	};
 
+	// --- РЕНДЕР ЕКРАНУ ЗАВАНТАЖЕННЯ ---
+	if (isLoading) {
+		return (
+			<div
+				className="quiz-container"
+				style={{ textAlign: "center", padding: "50px" }}
+			>
+				<h2>Завантаження бази питань... ⏳</h2>
+			</div>
+		);
+	}
+
 	// --- РЕНДЕР ЕКРАНУ СТАРТУ ---
 	if (quizState === "start") {
 		return (
-			<StartScreen
-				questionsData={questionsData}
-				onStart={startQuiz}
-				history={history}
-			/>
+			<>
+				<StartScreen
+					questionsData={questionsData}
+					onStart={startQuiz}
+					history={history}
+				/>
+			</>
 		);
 	}
 
