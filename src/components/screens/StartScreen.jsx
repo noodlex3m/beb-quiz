@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { createPortal } from "react-dom";
 import { CATEGORY_TARGETS } from "../../data/categoriesConfig";
 
 function StartScreen({ questionsData, onStart, history }) {
@@ -61,7 +62,7 @@ function StartScreen({ questionsData, onStart, history }) {
 			</div>
 
 			{/* МОДАЛЬНЕ ВІКНО З ІСТОРІЄЮ */}
-			{isModalOpen && (
+			{isModalOpen && createPortal(
 				<div className="modal-overlay" onClick={() => setIsModalOpen(false)}>
 					<div className="modal-content" onClick={(e) => e.stopPropagation()}>
 						<div className="modal-header">
@@ -93,7 +94,7 @@ function StartScreen({ questionsData, onStart, history }) {
 						</ul>
 					</div>
 				</div>
-			)}
+			, document.body)}
 		</div>
 	);
 }
