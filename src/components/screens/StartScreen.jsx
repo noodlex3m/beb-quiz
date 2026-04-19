@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { CATEGORY_TARGETS } from "../../data/categoriesConfig";
 
-function StartScreen({ questionsData, onStart }) {
+function StartScreen({ questionsData, onStart, history }) {
+	// Стан для керування видимістю модального вікна
+	const [isModalOpen, setIsModalOpen] = useState(false);
+
 	// Допоміжна функція для підрахунку питань у категорії
 	const getCategoryCount = (categoryName) => {
 		return questionsData.filter((q) => q.category === categoryName).length;
@@ -15,9 +18,18 @@ function StartScreen({ questionsData, onStart }) {
 					У базі зараз <strong>{questionsData.length}</strong> з 884 питань.
 				</p>
 
-				<button className="start-btn" onClick={onStart}>
-					Почати іспит (100 питань)
-				</button>
+				<div className="start-actions">
+					<button className="start-btn" onClick={onStart}>
+						Почати іспит (100 питань)
+					</button>
+
+					{/* Кнопка відкриття статистики (показуємо, тільки якщо є історія) */}
+					{history && history.length > 0 && (
+						<button className="stats-btn" onClick={() => setIsModalOpen(true)}>
+							📊 Моя статистика
+						</button>
+					)}
+				</div>
 			</div>
 
 			<div className="stats-section">
@@ -47,6 +59,41 @@ function StartScreen({ questionsData, onStart }) {
 					})}
 				</div>
 			</div>
+
+			{/* МОДАЛЬНЕ ВІКНО З ІСТОРІЄЮ */}
+			{isModalOpen && (
+				<div className="modal-overlay" onClick={() => setIsModalOpen(false)}>
+					<div className="modal-content" onClick={(e) => e.stopPropagation()}>
+						<div className="modal-header">
+							<h3>Історія спроб</h3>
+							<button
+								className="close-modal"
+								onClick={() => setIsModalOpen(false)}
+							>
+								&times;
+							</button>
+						</div>
+
+						<ul className="history-list">
+							{history.map((attempt, index) => {
+								const percentage = Math.round((attempt.score / attempt.total) * 100);
+								return (
+									<li key={index} className="history-item">
+										<span className="history-date">
+											{attempt.date}
+										</span>
+										<span
+											className={`history-score ${percentage >= 80 ? "passed-text" : "failed-text"}`}
+										>
+											{percentage}% ({attempt.score}/{attempt.total})
+										</span>
+									</li>
+								);
+							})}
+						</ul>
+					</div>
+				</div>
+			)}
 		</div>
 	);
 }
