@@ -6,6 +6,9 @@ import QuestionCard from "./screens/QuestionCard";
 import { storageService } from "../services/storageService";
 import { firebaseService } from "../services/firebaseService";
 
+// ТИМЧАСОВО РОЗКОМЕНТУЙ (або додай) ці два рядки:
+// import questionsRaw from "../data/questions.json";
+// const newQuestionsData = questionsRaw.filter((q) => q.question !== "");
 
 function Quiz() {
 	const [quizState, setQuizState] = useState("start"); // "start", "playing", "result"
@@ -43,6 +46,11 @@ function Quiz() {
 	const [selectedAnswer, setSelectedAnswer] = useState(null);
 	const [isChecking, setIsChecking] = useState(false);
 	const [shuffledOptions, setShuffledOptions] = useState([]);
+
+	// ТИМЧАСОВО РОЗКОМЕНТУЙ цю функцію:
+	// const handleUpload = async () => {
+	// 	await firebaseService.uploadQuestions(newQuestionsData);
+	// };
 
 	const startQuiz = () => {
 		// Обираємо 100 рандомних питань (або менше, якщо в базі ще немає 100)
@@ -137,6 +145,21 @@ function Quiz() {
 	if (quizState === "start") {
 		return (
 			<>
+				{/* <button
+					onClick={handleUpload}
+					style={{
+						position: "absolute",
+						top: 10,
+						left: 10,
+						background: "red",
+						color: "white",
+						padding: "10px",
+						zIndex: 9999,
+						borderRadius: "5px",
+					}}
+				>
+					🚀 ЗАВАНТАЖИТИ В FIREBASE
+				</button> */}
 				<StartScreen
 					questionsData={questionsData}
 					onStart={startQuiz}

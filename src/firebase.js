@@ -4,12 +4,12 @@ import { getFirestore } from "firebase/firestore";
 
 // Твоя конфігурація Firebase
 const firebaseConfig = {
-	apiKey: "AIzaSyC4nYecH1aB_nS4qbQI6bWE-Kf-70bz4mQ",
-	authDomain: "beb-quiz-app.firebaseapp.com",
-	projectId: "beb-quiz-app",
-	storageBucket: "beb-quiz-app.firebasestorage.app",
-	messagingSenderId: "305461667068",
-	appId: "1:305461667068:web:77dbba2ef5af6dc80ca379",
+	apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+	authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+	projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+	storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+	messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+	appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
 // Ініціалізація Firebase

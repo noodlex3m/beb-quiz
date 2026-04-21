@@ -682,5 +682,800 @@
 		],
 		"correctAnswer": "Верховної Ради України",
 		"explanation": "Відповідно до Конституції України, затвердження загальної структури, чисельності, визначення функцій Служби безпеки України, Збройних Сил України та інших військових формувань, утворених відповідно до законів України, належить до повноважень Верховної Ради України. (Примітка: ця норма прямо закріплена у пункті 22 частини першої статті 85 Основного Закону; інформацію про точний номер статті я наводжу поза межами наданого тестового переліку, спираючись на власні знання законодавства для вашого кращого запам'ятовування)."
+	},
+	{
+		"id": 54,
+		"category": "Конституція України",
+		"question": "Хто може висловити недовіру Генеральному прокуророві, що має наслідком його відставку з посади?",
+		"options": [
+			"Президент України",
+			"Колегія Генеральної прокуратури України",
+			"Конституційний Суд України",
+			"Верховна Рада України"
+		],
+		"correctAnswer": "Верховна Рада України",
+		"explanation": "Згідно з офіційним переліком тестових питань, саме Верховна Рада України може висловити недовіру Генеральному прокуророві, що має наслідком його відставку з посади."
+	},
+	{
+		"id": 55,
+		"category": "Конституція України",
+		"question": "На який період часу зберігається звання Президента України відповідно до Конституції України?",
+		"options": [
+			"довічно, якщо Президент України не був усунений з поста в порядку імпічменту",
+			"довічно, незалежно від підстав і способу припинення повноважень",
+			"на строк виконання повноважень Президента України",
+			"довічно, якщо повноваження Президента України не були припинені достроково"
+		],
+		"correctAnswer": "довічно, якщо Президент України не був усунений з поста в порядку імпічменту",
+		"explanation": "Відповідно до офіційного переліку тестових питань, звання Президента України зберігається довічно, якщо Президент України не був усунений з поста в порядку імпічменту."
+	},
+	{
+		"id": 56,
+		"category": "Конституція України",
+		"question": "Якими нормативно-правовими актами відповідно до Конституції України визначається територіальний устрій України?",
+		"options": [
+			"Конституцією України та законами України",
+			"законами України і підзаконними нормативно-правовими актами органів виконавчої влади",
+			"Конституцією України, законами України та актами Президента України",
+			"виключно Конституцією України"
+		],
+		"correctAnswer": "Конституцією України та законами України",
+		"explanation": "Згідно з офіційним переліком тестових питань, територіальний устрій України визначається Конституцією України та законами України."
+	},
+	{
+		"id": 57,
+		"category": "Конституція України",
+		"question": "Гарантом чого, відповідно до Конституції України, є Президент України?",
+		"options": [
+			"державної безпеки, суверенітету, обороноздатності, територіальної цілісності України, додержання Конституції України",
+			"узгодженого функціонування органів державної влади та виконання ними конституційних повноважень",
+			"державного суверенітету, територіальної цілісності України, додержання Конституції України, прав і свобод людини і громадянина",
+			"державного суверенітету, територіальної цілісності України, додержання Конституції України, законів України та міжнародних зобов'язань держави"
+		],
+		"correctAnswer": "державного суверенітету, територіальної цілісності України, додержання Конституції України, прав і свобод людини і громадянина",
+		"explanation": "Згідно з офіційним переліком тестових питань, Президент України є гарантом державного суверенітету, територіальної цілісності України, додержання Конституції України, прав і свобод людини і громадянина."
+	},
+	{
+		"id": 58,
+		"category": "Конституція України",
+		"question": "Яким актом оголошується амністія в Україні?",
+		"options": [
+			"Законом України",
+			"Указом Президента України",
+			"Наказом Генерального прокурора",
+			"Постановою Верховного Суду"
+		],
+		"correctAnswer": "Законом України",
+		"explanation": "Згідно з офіційним переліком тестових питань, амністія в Україні оголошується Законом України."
+	},
+	{
+		"id": 59,
+		"category": "Конституція України",
+		"question": "Ким є Президент України за Конституцією України?",
+		"options": [
+			"Главою держави",
+			"Лідером народу України",
+			"Главою держави і виконавчої влади",
+			"Державним символом України"
+		],
+		"correctAnswer": "Главою держави",
+		"explanation": "Згідно з офіційним переліком тестових питань, Президент України є главою держави."
+	},
+	{
+		"id": 60,
+		"category": "Конституція України",
+		"question": "До чиєї компетенції за Конституцією України належить здійснення помилування?",
+		"options": [
+			"Кабінету Міністрів України",
+			"Верховного Суду",
+			"Президента України",
+			"Верховної Ради України"
+		],
+		"correctAnswer": "Президента України",
+		"explanation": "Згідно з офіційним переліком тестових питань, здійснення помилування належить до компетенції Президента України."
+	},
+	{
+		"id": 61,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 62,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 63,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 64,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 65,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 66,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 67,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 68,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 69,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 70,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 71,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 72,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 73,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 74,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 75,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 76,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 77,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 78,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 79,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 80,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 81,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 82,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 83,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 84,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 85,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 86,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 87,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 88,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 89,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 90,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 91,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 92,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 93,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 94,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 95,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 96,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 97,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 98,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 99,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 100,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 101,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 102,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 103,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 104,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 105,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 106,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 107,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 108,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 109,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 110,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 111,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 112,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 113,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 114,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 115,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 116,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 117,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 118,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 119,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 120,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 121,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 122,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 123,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 124,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 125,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 126,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 127,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 128,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 129,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 130,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 131,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 132,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 133,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 134,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 135,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 136,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 137,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 138,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 139,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 140,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 141,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 142,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 143,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 144,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 145,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 146,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 147,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
+	},
+	{
+		"id": 148,
+		"category": "Конституція України",
+		"question": "",
+		"options": ["", "", "", ""],
+		"correctAnswer": "",
+		"explanation": ""
 	}
 ]
