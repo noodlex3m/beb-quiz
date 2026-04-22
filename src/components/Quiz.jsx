@@ -145,7 +145,8 @@ function Quiz() {
 	if (quizState === "start") {
 		return (
 			<>
-				{/* <button
+				{/*
+				<button
 					onClick={handleUpload}
 					style={{
 						position: "absolute",
@@ -159,7 +160,7 @@ function Quiz() {
 					}}
 				>
 					🚀 ЗАВАНТАЖИТИ В FIREBASE
-				</button> */}
+				</button>*/}
 				<StartScreen
 					questionsData={questionsData}
 					onStart={startQuiz}
