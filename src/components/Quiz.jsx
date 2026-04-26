@@ -6,6 +6,15 @@ import QuestionCard from "./screens/QuestionCard";
 import { storageService } from "../services/storageService";
 import { firebaseService } from "../services/firebaseService";
 
+// імпорти для авторизації
+import { auth } from "../firebase";
+import {
+	GoogleAuthProvider,
+	signInWithPopup,
+	signOut,
+	onAuthStateChanged,
+} from "firebase/auth";
+
 // ТИМЧАСОВО РОЗКОМЕНТУЙ (або додай) ці два рядки:
 // import questionsRaw from "../data/questions.json";
 // const newQuestionsData = questionsRaw.filter((q) => q.question !== "");
@@ -21,6 +30,7 @@ function Quiz() {
 	// НОВІ СТАНИ ДЛЯ FIREBASE
 	const [questionsData, setQuestionsData] = useState([]); // Тут тепер зберігатимемо питання
 	const [isLoading, setIsLoading] = useState(true); // Стан завантаження
+	const [user, setUser] = useState(null); // Авторизація
 
 	// Завантажуємо питання при першому запуску додатку
 	useEffect(() => {
@@ -40,7 +50,32 @@ function Quiz() {
 		};
 
 		loadQuestions();
+
+		const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+			setUser(currentUser); // Якщо увійшов - збереже дані, якщо вийшов - буде null
+		});
+		return () => unsubscribe(); // Очищення підписки
 	}, []);
+
+	// ФУНКЦІЯ: Вхід через Google
+	const handleLogin = async () => {
+		const provider = new GoogleAuthProvider();
+		try {
+			await signInWithPopup(auth, provider);
+		} catch (error) {
+			console.error("Помилка під час входу:", error);
+			alert("Не вдалося увійти. Спробуйте ще раз.");
+		}
+	};
+
+	// ФУНКЦІЯ: Вихід
+	const handleLogout = async () => {
+		try {
+			await signOut(auth);
+		} catch (error) {
+			console.error("Помилка під час виходу:", error);
+		}
+	};
 
 	// Стан під час гри
 	const [selectedAnswer, setSelectedAnswer] = useState(null);
@@ -165,6 +200,10 @@ function Quiz() {
 					questionsData={questionsData}
 					onStart={startQuiz}
 					history={history}
+					// НОВІ ПРОПСИ:
+					user={user}
+					onLogin={handleLogin}
+					onLogout={handleLogout}
 				/>
 			</>
 		);

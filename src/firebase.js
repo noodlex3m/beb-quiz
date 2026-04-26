@@ -1,6 +1,7 @@
 // src/firebase.js
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
 
 // Твоя конфігурація Firebase
 const firebaseConfig = {
@@ -17,3 +18,6 @@ const app = initializeApp(firebaseConfig);
 
 // Ініціалізація Firestore (бази даних)
 export const db = getFirestore(app);
+
+// Ініціалізація Authentication (авторизації)
+export const auth = getAuth(app);
