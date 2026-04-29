@@ -7,6 +7,7 @@ import { storageService } from "../services/storageService";
 import { firebaseService } from "../services/firebaseService";
 import ProfileScreen from "./screens/ProfileScreen";
 import { shuffleArray } from "../utils/shuffle";
+import questionsJsonData from "../data/questions.json";
 
 // імпорти для авторизації
 import { auth } from "../firebase";
@@ -47,10 +48,10 @@ const Quiz = forwardRef((props, ref) => {
 
 	// Завантажуємо питання при першому запуску додатку
 	useEffect(() => {
-		const loadQuestions = async () => {
+		const loadQuestions = () => {
 			try {
-				const data = await firebaseService.fetchQuestions();
-				// Відфільтровуємо пусті питання (про всяк випадок, якщо вони є в базі)
+				// Беремо питання локально, щоб не вичерпувати квоту Firebase!
+				const data = questionsJsonData;
 				const validQuestions = data.filter(
 					(q) => q.question && q.question.trim() !== "",
 				);
@@ -131,9 +132,7 @@ const Quiz = forwardRef((props, ref) => {
 		setQuizState("playing");
 
 		if (selected100.length > 0) {
-			setShuffledOptions(
-				shuffleArray(selected100[0].options),
-			);
+			setShuffledOptions(shuffleArray(selected100[0].options));
 		}
 	};
 
@@ -175,9 +174,7 @@ const Quiz = forwardRef((props, ref) => {
 		setWrongAnswers([]);
 
 		// Підготовка опцій для першого питання
-		setShuffledOptions(
-			shuffleArray(mistakeQuestions[0].options),
-		);
+		setShuffledOptions(shuffleArray(mistakeQuestions[0].options));
 		setQuizState("playing");
 	};
 
