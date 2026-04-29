@@ -9,6 +9,7 @@ function StartScreen({
 	user,
 	onLogin,
 	onLogout,
+	onGoToProfile,
 }) {
 	// Стан для керування видимістю модального вікна
 	const [isModalOpen, setIsModalOpen] = useState(false);
@@ -61,12 +62,9 @@ function StartScreen({
 								Почати іспит (100 питань)
 							</button>
 
-							{history && history.length > 0 && (
-								<button
-									className="stats-btn"
-									onClick={() => setIsModalOpen(true)}
-								>
-									📊 Моя статистика
+							{user && (
+								<button className="stats-btn" onClick={() => onGoToProfile()}>
+									👤 Мій кабінет
 								</button>
 							)}
 						</>
@@ -123,43 +121,6 @@ function StartScreen({
 					})}
 				</div>
 			</div>
-
-			{/* МОДАЛЬНЕ ВІКНО З ІСТОРІЄЮ */}
-			{isModalOpen &&
-				createPortal(
-					<div className="modal-overlay" onClick={() => setIsModalOpen(false)}>
-						<div className="modal-content" onClick={(e) => e.stopPropagation()}>
-							<div className="modal-header">
-								<h3>Історія спроб</h3>
-								<button
-									className="close-modal"
-									onClick={() => setIsModalOpen(false)}
-								>
-									&times;
-								</button>
-							</div>
-
-							<ul className="history-list">
-								{history.map((attempt, index) => {
-									const percentage = Math.round(
-										(attempt.score / attempt.total) * 100,
-									);
-									return (
-										<li key={index} className="history-item">
-											<span className="history-date">{attempt.date}</span>
-											<span
-												className={`history-score ${percentage >= 80 ? "passed-text" : "failed-text"}`}
-											>
-												{percentage}% ({attempt.score}/{attempt.total})
-											</span>
-										</li>
-									);
-								})}
-							</ul>
-						</div>
-					</div>,
-					document.body,
-				)}
 		</div>
 	);
 }

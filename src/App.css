@@ -704,3 +704,74 @@ body {
 	font-weight: 700;
 	font-size: 1.1rem;
 }
+
+/* --- PROFILE SCREEN --- */
+.profile-screen {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.profile-header {
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.profile-name {
+	font-size: 1.1rem;
+	margin: 10px 0;
+	color: var(--text-color);
+}
+
+.back-btn {
+	margin-top: 10px;
+	background: transparent;
+	border: 1px solid var(--border-color);
+	color: var(--text-color);
+}
+
+.back-btn:hover {
+	background: var(--btn-hover-bg);
+}
+
+.stats-cards {
+	display: flex;
+	gap: 20px;
+	justify-content: center;
+	flex-wrap: wrap;
+	margin-bottom: 30px;
+}
+
+.stat-card {
+	background: var(--card-bg);
+	padding: 20px;
+	border-radius: 12px;
+	border: 1px solid var(--border-color);
+	text-align: center;
+	min-width: 150px;
+	flex: 1;
+	max-width: 250px;
+}
+
+.stat-card h3 {
+	font-size: 2rem;
+	margin: 0 0 10px 0;
+	color: var(--primary-color);
+}
+
+.stat-label {
+	color: var(--text-muted);
+	margin: 0;
+	font-size: 0.9rem;
+}
+
+.history-title {
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.empty-history {
+	text-align: center;
+	color: var(--text-muted);
+	font-style: italic;
+}
