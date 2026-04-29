@@ -9,6 +9,7 @@ function StartScreen({
 	onLogin,
 	onLogout,
 	onGoToProfile,
+	history,
 }) {
 	// Допоміжна функція для підрахунку питань у категорії
 	const getCategoryCount = (categoryName) => {
