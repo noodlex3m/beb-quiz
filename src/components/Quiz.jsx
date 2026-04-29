@@ -6,6 +6,7 @@ import QuestionCard from "./screens/QuestionCard";
 import { storageService } from "../services/storageService";
 import { firebaseService } from "../services/firebaseService";
 import ProfileScreen from "./screens/ProfileScreen";
+import { shuffleArray } from "../utils/shuffle";
 
 // імпорти для авторизації
 import { auth } from "../firebase";
@@ -41,7 +42,7 @@ const Quiz = forwardRef((props, ref) => {
 			} else {
 				setQuizState("start");
 			}
-		}
+		},
 	}));
 
 	// Завантажуємо питання при першому запуску додатку
@@ -108,15 +109,17 @@ const Quiz = forwardRef((props, ref) => {
 		// Якщо передано categoryName, беремо питання тільки цієї категорії
 		let sourceQuestions = questionsData;
 		if (categoryName) {
-			sourceQuestions = questionsData.filter((q) => q.category === categoryName);
+			sourceQuestions = questionsData.filter(
+				(q) => q.category === categoryName,
+			);
 			if (sourceQuestions.length === 0) {
 				alert(`У категорії "${categoryName}" ще немає питань!`);
 				return;
 			}
 		}
 
-		// Обираємо 100 рандомних питань (або менше, якщо в базі/категорії ще немає 100)
-		const shuffledAll = [...sourceQuestions].sort(() => Math.random() - 0.5);
+		// Обираємо 100 рандомних питань
+		const shuffledAll = shuffleArray(sourceQuestions);
 		const selected100 = shuffledAll.slice(0, 100);
 
 		setExamQuestions(selected100);
@@ -129,7 +132,7 @@ const Quiz = forwardRef((props, ref) => {
 
 		if (selected100.length > 0) {
 			setShuffledOptions(
-				[...selected100[0].options].sort(() => Math.random() - 0.5),
+				shuffleArray(selected100[0].options),
 			);
 		}
 	};
@@ -153,7 +156,7 @@ const Quiz = forwardRef((props, ref) => {
 		);
 
 		// 4. Перемішуємо їх
-		mistakeQuestions = mistakeQuestions.sort(() => Math.random() - 0.5);
+		mistakeQuestions = shuffleArray(mistakeQuestions);
 
 		// 5. Якщо помилок більше 100, беремо тільки перші 100
 		if (mistakeQuestions.length > 100) {
@@ -173,7 +176,7 @@ const Quiz = forwardRef((props, ref) => {
 
 		// Підготовка опцій для першого питання
 		setShuffledOptions(
-			[...mistakeQuestions[0].options].sort(() => Math.random() - 0.5),
+			shuffleArray(mistakeQuestions[0].options),
 		);
 		setQuizState("playing");
 	};
@@ -239,9 +242,7 @@ const Quiz = forwardRef((props, ref) => {
 		if (nextQuestionIndex < examQuestions.length) {
 			setCurrentQuestionIndex(nextQuestionIndex);
 			setShuffledOptions(
-				[...examQuestions[nextQuestionIndex].options].sort(
-					() => Math.random() - 0.5,
-				),
+				shuffleArray(examQuestions[nextQuestionIndex].options),
 			);
 			setSelectedAnswer(null);
 			setIsChecking(false);
