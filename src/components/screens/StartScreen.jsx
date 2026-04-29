@@ -1,18 +1,14 @@
-import React, { useState } from "react";
-import { createPortal } from "react-dom";
+import React from "react";
 import { CATEGORY_TARGETS } from "../../data/categoriesConfig";
 
 function StartScreen({
 	questionsData,
 	onStart,
-	history,
 	user,
 	onLogin,
 	onLogout,
 	onGoToProfile,
 }) {
-	// Стан для керування видимістю модального вікна
-	const [isModalOpen, setIsModalOpen] = useState(false);
 
 	// Допоміжна функція для підрахунку питань у категорії
 	const getCategoryCount = (categoryName) => {
@@ -31,28 +27,13 @@ function StartScreen({
 					{/* ЯКЩО КОРИСТУВАЧ АВТОРИЗОВАНИЙ */}
 					{user ? (
 						<>
-							<div
-								className="user-profile"
-								style={{
-									width: "100%",
-									textAlign: "center",
-									marginBottom: "15px",
-								}}
-							>
-								<p style={{ margin: "0 0 10px 0" }}>
+							<div className="user-profile">
+								<p className="greeting-text">
 									Привіт, <strong>{user.displayName}</strong>! 👋
 								</p>
 								<button
+									className="logout-btn"
 									onClick={onLogout}
-									style={{
-										fontSize: "0.8rem",
-										padding: "5px 10px",
-										background: "transparent",
-										border: "1px solid var(--border-color)",
-										color: "var(--text-muted)",
-										borderRadius: "5px",
-										cursor: "pointer",
-									}}
 								>
 									Вийти з акаунта
 								</button>
@@ -70,22 +51,14 @@ function StartScreen({
 						</>
 					) : (
 						/* ЯКЩО КОРИСТУВАЧ НЕ АВТОРИЗОВАНИЙ */
-						<div
-							className="login-prompt"
-							style={{ width: "100%", textAlign: "center" }}
-						>
-							<p style={{ marginBottom: "15px", color: "var(--text-muted)" }}>
+						<div className="login-prompt">
+							<p className="login-hint">
 								Щоб проходити тести та зберігати прогрес, будь ласка,
 								авторизуйтесь.
 							</p>
 							<button
-								className="start-btn"
+								className="start-btn google-login-btn"
 								onClick={onLogin}
-								style={{
-									background: "#4285F4",
-									border: "none",
-									color: "white",
-								}}
 							>
 								🛡️ Увійти через Google
 							</button>

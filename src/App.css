@@ -775,3 +775,51 @@ body {
 	color: var(--text-muted);
 	font-style: italic;
 }
+
+/* --- START SCREEN AUTH STYLES --- */
+.user-profile {
+	width: 100%;
+	text-align: center;
+	margin-bottom: 15px;
+}
+
+.greeting-text {
+	margin: 0 0 10px 0;
+}
+
+.logout-btn {
+	font-size: 0.8rem;
+	padding: 5px 10px;
+	background: transparent;
+	border: 1px solid var(--border-color);
+	color: var(--text-muted);
+	border-radius: 5px;
+	cursor: pointer;
+	transition: all 0.2s ease;
+}
+
+.logout-btn:hover {
+	color: var(--text-color);
+	border-color: var(--text-color);
+}
+
+.login-prompt {
+	width: 100%;
+	text-align: center;
+}
+
+.login-hint {
+	margin-bottom: 15px;
+	color: var(--text-muted);
+}
+
+.google-login-btn {
+	background: #4285F4;
+	border: none;
+	color: white;
+}
+
+.google-login-btn:hover {
+	background: #3367d6;
+	border-color: #3367d6;
+}

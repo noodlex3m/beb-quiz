@@ -197,8 +197,6 @@ function Quiz() {
 				<StartScreen
 					questionsData={questionsData}
 					onStart={startQuiz}
-					history={history}
-					// НОВІ ПРОПСИ:
 					user={user}
 					onLogin={handleLogin}
 					onLogout={handleLogout}
