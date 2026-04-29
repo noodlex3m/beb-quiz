@@ -78,7 +78,18 @@ function StartScreen({
 						const percentage = Math.round((currentCount / cat.expected) * 100);
 
 						return (
-							<div key={index} className="category-card">
+							<div 
+								key={index} 
+								className={`category-card ${user ? 'clickable' : ''}`}
+								onClick={() => {
+									if (user) {
+										onStart(cat.title);
+									} else {
+										alert("Будь ласка, авторизуйтесь, щоб проходити тестування.");
+									}
+								}}
+								title={user ? `Почати тест по категорії: ${cat.title}` : "Авторизуйтесь, щоб почати тест"}
+							>
 								<div className="category-header">
 									<span className="category-title">{cat.title}</span>
 									<span className="category-progress">{percentage}%</span>
@@ -89,8 +100,11 @@ function StartScreen({
 										style={{ width: `${percentage}%` }}
 									></div>
 								</div>
-								<div className="category-count">
-									{currentCount} / {cat.expected}
+								<div className="category-count" style={{ display: 'flex', justifyContent: 'space-between' }}>
+									<span style={{ color: 'var(--text-muted)', fontWeight: 'normal', fontSize: '0.8rem' }}>
+										{user ? "▶ Клікніть для іспиту" : ""}
+									</span>
+									<span>{currentCount} / {cat.expected}</span>
 								</div>
 							</div>
 						);

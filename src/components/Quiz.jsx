@@ -104,9 +104,19 @@ const Quiz = forwardRef((props, ref) => {
 	const [isChecking, setIsChecking] = useState(false);
 	const [shuffledOptions, setShuffledOptions] = useState([]);
 
-	const startQuiz = () => {
-		// Обираємо 100 рандомних питань (або менше, якщо в базі ще немає 100)
-		const shuffledAll = [...questionsData].sort(() => Math.random() - 0.5);
+	const startQuiz = (categoryName = null) => {
+		// Якщо передано categoryName, беремо питання тільки цієї категорії
+		let sourceQuestions = questionsData;
+		if (categoryName) {
+			sourceQuestions = questionsData.filter((q) => q.category === categoryName);
+			if (sourceQuestions.length === 0) {
+				alert(`У категорії "${categoryName}" ще немає питань!`);
+				return;
+			}
+		}
+
+		// Обираємо 100 рандомних питань (або менше, якщо в базі/категорії ще немає 100)
+		const shuffledAll = [...sourceQuestions].sort(() => Math.random() - 0.5);
 		const selected100 = shuffledAll.slice(0, 100);
 
 		setExamQuestions(selected100);
