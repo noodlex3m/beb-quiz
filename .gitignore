@@ -22,4 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+.tmp.driveupload/
 .env
+src/data/questions.json
