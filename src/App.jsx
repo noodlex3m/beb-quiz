@@ -20,10 +20,20 @@ function App() {
 		setIsDarkMode(!isDarkMode);
 	};
 
+	const goHome = () => {
+		window.dispatchEvent(new Event("goHome"));
+	};
+
 	return (
 		<div className="app-container">
 			<header className="app-header">
-				<h1>🏛️ БЕБ Тренажер</h1>
+				<h1
+					onClick={goHome}
+					style={{ cursor: "pointer" }}
+					title="На головну"
+				>
+					🏛️ БЕБ Тренажер
+				</h1>
 				<button className="theme-toggle" onClick={toggleTheme}>
 					{isDarkMode ? "☀️ Світла" : "🌙 Темна"}
 				</button>

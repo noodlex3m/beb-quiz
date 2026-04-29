@@ -29,6 +29,25 @@ function Quiz() {
 	const [isLoading, setIsLoading] = useState(true); // Стан завантаження
 	const [user, setUser] = useState(null); // Авторизація
 
+	// Слухаємо подію "goHome" для повернення на головну
+	useEffect(() => {
+		const handleGoHome = () => {
+			if (quizState === "playing") {
+				const confirmExit = window.confirm(
+					"Ви дійсно хочете перервати іспит? Ваш поточний прогрес не буде збережено.",
+				);
+				if (confirmExit) {
+					setQuizState("start");
+				}
+			} else {
+				setQuizState("start");
+			}
+		};
+
+		window.addEventListener("goHome", handleGoHome);
+		return () => window.removeEventListener("goHome", handleGoHome);
+	}, [quizState]);
+
 	// Завантажуємо питання при першому запуску додатку
 	useEffect(() => {
 		const loadQuestions = async () => {
