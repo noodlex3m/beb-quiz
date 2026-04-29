@@ -25,7 +25,7 @@ function Quiz() {
 	const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 	const [score, setScore] = useState(0);
 	const [wrongAnswers, setWrongAnswers] = useState([]);
-	const [history, setHistory] = useState(storageService.getHistory());
+	const [history, setHistory] = useState([]);
 
 	// НОВІ СТАНИ ДЛЯ FIREBASE
 	const [questionsData, setQuestionsData] = useState([]); // Тут тепер зберігатимемо питання
@@ -51,8 +51,18 @@ function Quiz() {
 
 		loadQuestions();
 
-		const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-			setUser(currentUser); // Якщо увійшов - збереже дані, якщо вийшов - буде null
+		const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
+			setUser(currentUser);
+
+			// Завантажуємо історію з Firebase, якщо користувач авторизований
+			if (currentUser) {
+				const userHistory = await firebaseService.getUserHistory(
+					currentUser.uid,
+				);
+				setHistory(userHistory);
+			} else {
+				setHistory([]); // Очищаємо історію, якщо користувач вийшов
+			}
 		});
 		return () => unsubscribe(); // Очищення підписки
 	}, []);
@@ -130,7 +140,8 @@ function Quiz() {
 		}
 	};
 
-	const finishQuiz = () => {
+	const finishQuiz = async () => {
+		const percentage = Math.round((score / examQuestions.length) * 100);
 		const newResult = {
 			date:
 				new Date().toLocaleDateString("uk-UA") +
@@ -141,10 +152,21 @@ function Quiz() {
 				}),
 			score: score,
 			total: examQuestions.length,
+			percentage: percentage,
 		};
-		const updatedHistory = storageService.saveResult(newResult);
 
-		setHistory(updatedHistory);
+		// Якщо користувач увійшов, зберігаємо у хмарі
+		if (user) {
+			await firebaseService.saveUserResult(user.uid, newResult);
+			// Оновлюємо історію, щоб вона одразу відображалася
+			const updatedHistory = await firebaseService.getUserHistory(user.uid);
+			setHistory(updatedHistory);
+		} else {
+			// Якщо не увійшов - зберігаємо локально і перевіряємо наявність історії
+			const updatedHistory = storageService.saveResult(newResult);
+			setHistory(updatedHistory);
+		}
+
 		setQuizState("result");
 	};
 
