@@ -223,9 +223,8 @@ const Quiz = forwardRef((props, ref) => {
 		// Якщо користувач увійшов, зберігаємо у хмарі
 		if (user) {
 			await firebaseService.saveUserResult(user.uid, newResult);
-			// Оновлюємо історію, щоб вона одразу відображалася
-			const updatedHistory = await firebaseService.getUserHistory(user.uid);
-			setHistory(updatedHistory);
+			// Оновлюємо історію ЛОКАЛЬНО, щоб не витрачати ліміти Firebase на повторне зчитування:
+			setHistory((prev) => [newResult, ...prev].slice(0, 8));
 		} else {
 			// Якщо не увійшов - зберігаємо локально і перевіряємо наявність історії
 			const updatedHistory = storageService.saveResult(newResult);
