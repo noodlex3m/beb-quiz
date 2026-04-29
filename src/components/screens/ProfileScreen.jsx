@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useMemo } from "react";
 
 function ProfileScreen({ user, history, onBack }) {
-	// Підрахунок статистики
+	// 1. Базова статистика
 	const totalTests = history.length;
 	const averageScore =
 		totalTests > 0
@@ -9,6 +9,33 @@ function ProfileScreen({ user, history, onBack }) {
 					history.reduce((acc, curr) => acc + curr.percentage, 0) / totalTests,
 				)
 			: 0;
+
+	// 2. НОВА ЛОГІКА: Підрахунок слабких категорій
+	const weakestCategories = useMemo(() => {
+		if (!history || history.length === 0) return [];
+
+		const categoryErrors = {};
+
+		// Проходимося по всіх тестах в історії
+		history.forEach((attempt) => {
+			// Якщо в тесті були помилки (wrongAnswers існує і це масив)
+			if (attempt.wrongAnswers && Array.isArray(attempt.wrongAnswers)) {
+				attempt.wrongAnswers.forEach((mistake) => {
+					const cat = mistake.category || "Інше";
+					if (!categoryErrors[cat]) {
+						categoryErrors[cat] = 0;
+					}
+					categoryErrors[cat] += 1; // Додаємо +1 помилку цій категорії
+				});
+			}
+		});
+
+		// Перетворюємо об'єкт в масив, сортуємо за кількістю помилок (від найбільшого) і беремо топ-3
+		return Object.entries(categoryErrors)
+			.map(([name, count]) => ({ name, count }))
+			.sort((a, b) => b.count - a.count)
+			.slice(0, 3);
+	}, [history]);
 
 	return (
 		<div className="profile-screen quiz-container">
@@ -32,6 +59,21 @@ function ProfileScreen({ user, history, onBack }) {
 					<p className="stat-label">Середня успішність</p>
 				</div>
 			</div>
+
+			{/* НОВИЙ БЛОК: Слабкі категорії */}
+			{weakestCategories.length > 0 && (
+				<div className="weak-categories-section">
+					<h3 className="weak-categories-title">⚠️ Топ тем для повторення:</h3>
+					<ul className="weak-categories-list">
+						{weakestCategories.map((cat, idx) => (
+							<li key={idx} className="weak-category-item">
+								<span className="weak-category-name">{cat.name}</span>
+								<strong className="weak-category-count">{cat.count} помилок</strong>
+							</li>
+						))}
+					</ul>
+				</div>
+			)}
 
 			<div className="history-section">
 				<h3 className="history-title">Історія останніх спроб</h3>

@@ -63,6 +63,7 @@ export const firebaseService = {
 				percentage: resultData.percentage,
 				date: resultData.date,
 				timestamp: new Date(), // Зберігаємо точний час для сортування
+				wrongAnswers: resultData.wrongAnswers,
 			});
 			console.log("Результат збережено у Firebase!");
 		} catch (error) {

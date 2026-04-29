@@ -92,7 +92,7 @@ function Quiz() {
 	const startQuiz = () => {
 		// Обираємо 100 рандомних питань (або менше, якщо в базі ще немає 100)
 		const shuffledAll = [...questionsData].sort(() => Math.random() - 0.5);
-		const selected100 = shuffledAll.slice(0, 100);
+		const selected100 = shuffledAll.slice(0, 5);
 
 		setExamQuestions(selected100);
 		setCurrentQuestionIndex(0);
@@ -127,6 +127,8 @@ function Quiz() {
 					question: currentQuestion.question,
 					userAnswer: option, // що відповів користувач
 					correctAnswer: currentQuestion.correctAnswer, // що було правильно
+					id: currentQuestion.id, // номер питання
+					category: currentQuestion.category, // категорія
 				},
 			]);
 		}
@@ -145,6 +147,7 @@ function Quiz() {
 			score: score,
 			total: examQuestions.length,
 			percentage: percentage,
+			wrongAnswers: wrongAnswers,
 		};
 
 		// Якщо користувач увійшов, зберігаємо у хмарі

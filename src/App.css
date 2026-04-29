@@ -823,3 +823,50 @@ body {
 	background: #3367d6;
 	border-color: #3367d6;
 }
+
+/* --- WEAK CATEGORIES STYLES --- */
+.weak-categories-section {
+	max-width: 600px;
+	margin: 0 auto 30px auto;
+	padding: 20px;
+	background: rgba(211, 47, 47, 0.05); /* Slight red tint */
+	border-radius: 12px;
+	border: 1px solid rgba(211, 47, 47, 0.2);
+}
+
+.weak-categories-title {
+	text-align: center;
+	color: #d32f2f;
+	margin-top: 0;
+	margin-bottom: 15px;
+}
+
+.weak-categories-list {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+
+.weak-category-item {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 10px;
+	padding-bottom: 10px;
+	border-bottom: 1px dashed rgba(0,0,0,0.1);
+	color: var(--text-color);
+}
+
+.weak-category-item:last-child {
+	margin-bottom: 0;
+	padding-bottom: 0;
+	border-bottom: none;
+}
+
+.weak-category-name {
+	flex: 1;
+	padding-right: 15px;
+}
+
+.weak-category-count {
+	color: #d32f2f;
+}
