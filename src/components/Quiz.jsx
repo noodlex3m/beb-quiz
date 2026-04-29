@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, forwardRef, useImperativeHandle } from "react";
 import { CATEGORY_TARGETS } from "../data/categoriesConfig";
 import StartScreen from "./screens/StartScreen";
 import ResultScreen from "./screens/ResultScreen";
@@ -16,7 +16,7 @@ import {
 	onAuthStateChanged,
 } from "firebase/auth";
 
-function Quiz() {
+const Quiz = forwardRef((props, ref) => {
 	const [quizState, setQuizState] = useState("start"); // "start", "playing", "result"
 	const [examQuestions, setExamQuestions] = useState([]);
 	const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -29,9 +29,8 @@ function Quiz() {
 	const [isLoading, setIsLoading] = useState(true); // Стан завантаження
 	const [user, setUser] = useState(null); // Авторизація
 
-	// Слухаємо подію "goHome" для повернення на головну
-	useEffect(() => {
-		const handleGoHome = () => {
+	useImperativeHandle(ref, () => ({
+		goHome: () => {
 			if (quizState === "playing") {
 				const confirmExit = window.confirm(
 					"Ви дійсно хочете перервати іспит? Ваш поточний прогрес не буде збережено.",
@@ -42,11 +41,8 @@ function Quiz() {
 			} else {
 				setQuizState("start");
 			}
-		};
-
-		window.addEventListener("goHome", handleGoHome);
-		return () => window.removeEventListener("goHome", handleGoHome);
-	}, [quizState]);
+		}
+	}));
 
 	// Завантажуємо питання при першому запуску додатку
 	useEffect(() => {
@@ -311,6 +307,6 @@ function Quiz() {
 	}
 
 	return null;
-}
+});
 
 export default Quiz;

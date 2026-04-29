@@ -1,12 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Quiz from "./components/Quiz";
 import "./App.css";
 
 function App() {
-	// Стан для теми: за замовчуванням false (світла)
 	const [isDarkMode, setIsDarkMode] = useState(false);
+	const quizRef = useRef();
 
-	// Цей хук спрацьовує щоразу, коли змінюється isDarkMode
 	useEffect(() => {
 		if (isDarkMode) {
 			document.body.setAttribute("data-theme", "dark");
@@ -15,13 +14,14 @@ function App() {
 		}
 	}, [isDarkMode]);
 
-	// Функція перемикання
 	const toggleTheme = () => {
 		setIsDarkMode(!isDarkMode);
 	};
 
 	const goHome = () => {
-		window.dispatchEvent(new Event("goHome"));
+		if (quizRef.current) {
+			quizRef.current.goHome();
+		}
 	};
 
 	return (
@@ -39,7 +39,7 @@ function App() {
 				</button>
 			</header>
 			<main>
-				<Quiz />
+				<Quiz ref={quizRef} />
 			</main>
 		</div>
 	);
