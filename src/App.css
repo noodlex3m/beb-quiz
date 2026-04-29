@@ -883,3 +883,17 @@ body {
 .weak-category-count {
 	color: #d32f2f;
 }
+
+.abort-btn {
+	background: transparent;
+	color: var(--text-muted);
+	border: none;
+	cursor: pointer;
+	text-decoration: underline;
+	font-size: 0.9rem;
+	padding: 5px;
+}
+
+.abort-btn:hover {
+	color: var(--text-color);
+}

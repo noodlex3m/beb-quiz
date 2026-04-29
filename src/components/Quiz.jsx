@@ -290,6 +290,14 @@ const Quiz = forwardRef((props, ref) => {
 				selectedAnswer={selectedAnswer}
 				onAnswerClick={handleAnswerClick}
 				onNextQuestion={handleNextQuestion}
+				onAbort={() => {
+					const confirmExit = window.confirm(
+						"Ви дійсно хочете перервати іспит? Ваш поточний прогрес не буде збережено.",
+					);
+					if (confirmExit) {
+						setQuizState("start");
+					}
+				}}
 			/>
 		);
 	}

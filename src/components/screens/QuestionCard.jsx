@@ -9,13 +9,20 @@ function QuestionCard({
 	selectedAnswer,
 	onAnswerClick,
 	onNextQuestion,
+	onAbort,
 }) {
 	if (!currentQuestion) return <div>Завантаження...</div>;
 
 	return (
 		<div className="quiz-container">
-			<div className="progress-bar">
-				Питання {currentQuestionIndex + 1} з {totalQuestions}
+			<div className="progress-bar" style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+				<span>Питання {currentQuestionIndex + 1} з {totalQuestions}</span>
+				<button 
+					onClick={onAbort} 
+					className="abort-btn"
+				>
+					Завершити достроково
+				</button>
 			</div>
 
 			<div className="question-category">{currentQuestion.category}</div>
