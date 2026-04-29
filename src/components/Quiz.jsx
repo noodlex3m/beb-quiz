@@ -107,9 +107,10 @@ const Quiz = forwardRef((props, ref) => {
 	const [shuffledOptions, setShuffledOptions] = useState([]);
 
 	const startQuiz = (categoryName = null) => {
-		// Якщо передано categoryName, беремо питання тільки цієї категорії
+		// Якщо передано categoryName як рядок, беремо питання тільки цієї категорії
+		// (перевіряємо typeof, щоб уникнути багів, коли React передає сюди об'єкт події Event)
 		let sourceQuestions = questionsData;
-		if (categoryName) {
+		if (typeof categoryName === "string") {
 			sourceQuestions = questionsData.filter(
 				(q) => q.category === categoryName,
 			);
