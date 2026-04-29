@@ -92,7 +92,7 @@ function Quiz() {
 	const startQuiz = () => {
 		// Обираємо 100 рандомних питань (або менше, якщо в базі ще немає 100)
 		const shuffledAll = [...questionsData].sort(() => Math.random() - 0.5);
-		const selected100 = shuffledAll.slice(0, 5);
+		const selected100 = shuffledAll.slice(0, 100);
 
 		setExamQuestions(selected100);
 		setCurrentQuestionIndex(0);
@@ -107,6 +107,50 @@ function Quiz() {
 				[...selected100[0].options].sort(() => Math.random() - 0.5),
 			);
 		}
+	};
+
+	// РОБОТА НАД ПОМИЛКАМИ
+	const startMistakesQuiz = () => {
+		// 1. Збираємо всі помилки з усіх тестів в історії
+		const allMistakes = [];
+		history.forEach((attempt) => {
+			if (attempt.wrongAnswers && Array.isArray(attempt.wrongAnswers)) {
+				allMistakes.push(...attempt.wrongAnswers);
+			}
+		});
+
+		// 2. Отримуємо унікальні ID помилок
+		const uniqueMistakeIds = [...new Set(allMistakes.map((m) => m.id))];
+
+		// 3. Знаходимо ці питання у загальній базі
+		let mistakeQuestions = questionsData.filter((q) =>
+			uniqueMistakeIds.includes(q.id),
+		);
+
+		// 4. Перемішуємо їх
+		mistakeQuestions = mistakeQuestions.sort(() => Math.random() - 0.5);
+
+		// 5. Якщо помилок більше 100, беремо тільки перші 100
+		if (mistakeQuestions.length > 100) {
+			mistakeQuestions = mistakeQuestions.slice(0, 100);
+		}
+
+		// 6. Якщо помилок немає взагалі
+		if (mistakeQuestions.length === 0) {
+			alert("У вас ще немає збережених помилок! Пройдіть звичайний іспит.");
+			return;
+		}
+
+		setExamQuestions(mistakeQuestions);
+		setCurrentQuestionIndex(0);
+		setScore(0);
+		setWrongAnswers([]);
+
+		// Підготовка опцій для першого питання
+		setShuffledOptions(
+			[...mistakeQuestions[0].options].sort(() => Math.random() - 0.5),
+		);
+		setQuizState("playing");
 	};
 
 	const currentQuestion = examQuestions[currentQuestionIndex];
@@ -200,6 +244,7 @@ function Quiz() {
 				<StartScreen
 					questionsData={questionsData}
 					onStart={startQuiz}
+					onStartMistakes={startMistakesQuiz}
 					user={user}
 					onLogin={handleLogin}
 					onLogout={handleLogout}

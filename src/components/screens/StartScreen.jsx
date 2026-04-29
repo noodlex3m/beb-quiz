@@ -4,12 +4,12 @@ import { CATEGORY_TARGETS } from "../../data/categoriesConfig";
 function StartScreen({
 	questionsData,
 	onStart,
+	onStartMistakes,
 	user,
 	onLogin,
 	onLogout,
 	onGoToProfile,
 }) {
-
 	// Допоміжна функція для підрахунку питань у категорії
 	const getCategoryCount = (categoryName) => {
 		return questionsData.filter((q) => q.category === categoryName).length;
@@ -31,10 +31,7 @@ function StartScreen({
 								<p className="greeting-text">
 									Привіт, <strong>{user.displayName}</strong>! 👋
 								</p>
-								<button
-									className="logout-btn"
-									onClick={onLogout}
-								>
+								<button className="logout-btn" onClick={onLogout}>
 									Вийти з акаунта
 								</button>
 							</div>
@@ -43,7 +40,16 @@ function StartScreen({
 								Почати іспит (100 питань)
 							</button>
 
-							{user && (
+							{history && history.length > 0 && (
+								<button
+									className="start-btn mistakes-btn"
+									onClick={onStartMistakes}
+								>
+									🎯 Робота над помилками
+								</button>
+							)}
+
+							{history && history.length > 0 && (
 								<button className="stats-btn" onClick={() => onGoToProfile()}>
 									👤 Мій кабінет
 								</button>
@@ -56,10 +62,7 @@ function StartScreen({
 								Щоб проходити тести та зберігати прогрес, будь ласка,
 								авторизуйтесь.
 							</p>
-							<button
-								className="start-btn google-login-btn"
-								onClick={onLogin}
-							>
+							<button className="start-btn google-login-btn" onClick={onLogin}>
 								🛡️ Увійти через Google
 							</button>
 						</div>
