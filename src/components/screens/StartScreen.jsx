@@ -40,7 +40,7 @@ function StartScreen({
 								Почати іспит (100 питань)
 							</button>
 
-							{history && history.length > 0 && (
+							{history && history.some((h) => h.wrongAnswers && h.wrongAnswers.length > 0) && (
 								<button
 									className="start-btn mistakes-btn"
 									onClick={onStartMistakes}
