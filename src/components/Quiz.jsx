@@ -8,6 +8,7 @@ import { firebaseService } from "../services/firebaseService";
 import ProfileScreen from "./screens/ProfileScreen";
 import { shuffleArray } from "../utils/shuffle";
 import questionsJsonData from "../data/questions.json";
+import LeaderboardScreen from "./screens/LeaderboardScreen";
 
 // імпорти для авторизації
 import { auth } from "../firebase";
@@ -218,6 +219,7 @@ const Quiz = forwardRef((props, ref) => {
 			total: examQuestions.length,
 			percentage: percentage,
 			wrongAnswers: wrongAnswers,
+			userName: user ? user.displayName : "Анонім",
 		};
 
 		// Якщо користувач увійшов, зберігаємо у хмарі
@@ -273,6 +275,7 @@ const Quiz = forwardRef((props, ref) => {
 					onLogout={handleLogout}
 					onGoToProfile={() => setQuizState("profile")}
 					history={history}
+					onGoToLeaderboard={() => setQuizState("leaderboard")}
 				/>
 			</>
 		);
@@ -287,7 +290,9 @@ const Quiz = forwardRef((props, ref) => {
 			/>
 		);
 	}
-
+	if (quizState === "leaderboard") {
+		return <LeaderboardScreen onBack={() => setQuizState("start")} />;
+	}
 	if (quizState === "playing") {
 		return (
 			<QuestionCard

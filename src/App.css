@@ -898,6 +898,99 @@ body {
 	color: var(--text-color);
 }
 
+/* --- LEADERBOARD STYLES --- */
+.leaderboard-header {
+	text-align: center;
+	margin-bottom: 30px;
+}
+
+.leaderboard-subtitle {
+	color: var(--text-muted);
+}
+
+.leaderboard-back {
+	margin-top: 15px;
+}
+
+.leaderboard-empty {
+	text-align: center;
+	padding: 30px;
+}
+
+.table-responsive {
+	overflow-x: auto;
+}
+
+.leaderboard-table {
+	width: 100%;
+	border-collapse: collapse;
+	text-align: left;
+}
+
+.leaderboard-table thead tr {
+	background: rgba(0, 0, 0, 0.05);
+	border-bottom: 2px solid var(--border-color);
+}
+
+.leaderboard-table th {
+	padding: 12px;
+}
+
+.col-rank {
+	width: 50px;
+	text-align: center;
+}
+
+.col-score {
+	text-align: center;
+}
+
+.col-date {
+	text-align: right;
+}
+
+.leaderboard-table tbody tr {
+	border-bottom: 1px solid var(--border-color);
+	transition: background-color 0.2s ease;
+}
+
+.leaderboard-table tbody tr:hover {
+	background-color: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="dark"] .leaderboard-table thead tr {
+	background: rgba(255, 255, 255, 0.05);
+}
+
+.leaderboard-table td {
+	padding: 12px;
+}
+
+.cell-rank {
+	text-align: center;
+	font-size: 1.2rem;
+	font-weight: bold;
+}
+
+.cell-name {
+	font-weight: 500;
+}
+
+.cell-score {
+	text-align: center;
+}
+
+.cell-date {
+	text-align: right;
+	font-size: 0.9rem;
+	color: var(--text-muted);
+}
+
+.score-details {
+	font-size: 0.8rem;
+	color: var(--text-muted);
+}
+
 .category-card.clickable {
 	cursor: pointer;
 	transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;

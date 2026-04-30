@@ -50,7 +50,7 @@ export const firebaseService = {
 			alert("❌ Сталася помилка. Подивись консоль.");
 		}
 	},
-	// --- НОВІ ФУНКЦІЇ ДЛЯ СТАТИСТИКИ ---
+	// --- ФУНКЦІЇ ДЛЯ СТАТИСТИКИ ТА РЕЙТИНГУ ---
 
 	// 1. Збереження результату іспиту
 	saveUserResult: async (userId, resultData) => {
@@ -58,12 +58,13 @@ export const firebaseService = {
 			// Зберігаємо в колекцію "user_results"
 			await addDoc(collection(db, "user_results"), {
 				userId: userId, // ID користувача з Google
+				userName: resultData.userName || "Анонім",
 				score: resultData.score,
 				total: resultData.total,
 				percentage: resultData.percentage,
 				date: resultData.date,
 				timestamp: new Date(), // Зберігаємо точний час для сортування
-				wrongAnswers: resultData.wrongAnswers,
+				wrongAnswers: resultData.wrongAnswers || [],
 			});
 			console.log("Результат збережено у Firebase!");
 		} catch (error) {
@@ -71,7 +72,7 @@ export const firebaseService = {
 		}
 	},
 
-	// 2. Отримання останніх 8 результатів конкретного користувача
+	// 2. Отримання історії конкретного користувача
 	getUserHistory: async (userId) => {
 		try {
 			// Створюємо запит: шукаємо результати ЦЬОГО користувача, сортуємо від найновіших, беремо 8 штук
@@ -90,6 +91,28 @@ export const firebaseService = {
 			return history;
 		} catch (error) {
 			console.error("Помилка отримання історії:", error);
+			return [];
+		}
+	},
+
+	// 3. Отримання Топ-10 результатів для Лідерборду
+	getTopResults: async () => {
+		try {
+			// Сортуємо спочатку за відсотком (від найбільшого), потім за часом (найновіші перші)
+			const q = query(
+				collection(db, "user_results"),
+				orderBy("percentage", "desc"),
+				orderBy("timestamp", "desc"),
+				limit(10),
+			);
+			const querySnapshot = await getDocs(q);
+			const topResults = [];
+			querySnapshot.forEach((doc) => {
+				topResults.push({ id: doc.id, ...doc.data() });
+			});
+			return topResults;
+		} catch (error) {
+			console.error("Помилка отримання лідерборду:", error);
 			return [];
 		}
 	},

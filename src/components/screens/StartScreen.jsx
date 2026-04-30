@@ -41,14 +41,17 @@ function StartScreen({
 								Почати іспит (100 питань)
 							</button>
 
-							{history && history.some((h) => h.wrongAnswers && h.wrongAnswers.length > 0) && (
-								<button
-									className="start-btn mistakes-btn"
-									onClick={onStartMistakes}
-								>
-									🎯 Робота над помилками
-								</button>
-							)}
+							{history &&
+								history.some(
+									(h) => h.wrongAnswers && h.wrongAnswers.length > 0,
+								) && (
+									<button
+										className="start-btn mistakes-btn"
+										onClick={onStartMistakes}
+									>
+										🎯 Робота над помилками
+									</button>
+								)}
 
 							{history && history.length > 0 && (
 								<button className="stats-btn" onClick={() => onGoToProfile()}>
@@ -68,6 +71,11 @@ function StartScreen({
 							</button>
 						</div>
 					)}
+
+					{/* РЕЙТИНГ НАЙКРАЩИХ (доступно всім) */}
+					<button className="stats-btn leaderboard-btn" onClick={onGoToLeaderboard} style={{ marginTop: '10px', background: 'var(--card-bg)' }}>
+						🏆 Рейтинг найкращих
+					</button>
 				</div>
 			</div>
 
@@ -79,17 +87,23 @@ function StartScreen({
 						const percentage = Math.round((currentCount / cat.expected) * 100);
 
 						return (
-							<div 
-								key={index} 
-								className={`category-card ${user ? 'clickable' : ''}`}
+							<div
+								key={index}
+								className={`category-card ${user ? "clickable" : ""}`}
 								onClick={() => {
 									if (user) {
 										onStart(cat.title);
 									} else {
-										alert("Будь ласка, авторизуйтесь, щоб проходити тестування.");
+										alert(
+											"Будь ласка, авторизуйтесь, щоб проходити тестування.",
+										);
 									}
 								}}
-								title={user ? `Почати тест по категорії: ${cat.title}` : "Авторизуйтесь, щоб почати тест"}
+								title={
+									user
+										? `Почати тест по категорії: ${cat.title}`
+										: "Авторизуйтесь, щоб почати тест"
+								}
 							>
 								<div className="category-header">
 									<span className="category-title">{cat.title}</span>
@@ -101,11 +115,22 @@ function StartScreen({
 										style={{ width: `${percentage}%` }}
 									></div>
 								</div>
-								<div className="category-count" style={{ display: 'flex', justifyContent: 'space-between' }}>
-									<span style={{ color: 'var(--text-muted)', fontWeight: 'normal', fontSize: '0.8rem' }}>
+								<div
+									className="category-count"
+									style={{ display: "flex", justifyContent: "space-between" }}
+								>
+									<span
+										style={{
+											color: "var(--text-muted)",
+											fontWeight: "normal",
+											fontSize: "0.8rem",
+										}}
+									>
 										{user ? "▶ Клікніть для іспиту" : ""}
 									</span>
-									<span>{currentCount} / {cat.expected}</span>
+									<span>
+										{currentCount} / {cat.expected}
+									</span>
 								</div>
 							</div>
 						);
