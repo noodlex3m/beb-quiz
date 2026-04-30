@@ -148,11 +148,11 @@ const Quiz = forwardRef((props, ref) => {
 		});
 
 		// 2. Отримуємо унікальні ID помилок
-		const uniqueMistakeIds = [...new Set(allMistakes.map((m) => m.id))];
+		const uniqueMistakeIds = [...new Set(allMistakes.map((m) => String(m.id)))];
 
 		// 3. Знаходимо ці питання у загальній базі
 		let mistakeQuestions = questionsData.filter((q) =>
-			uniqueMistakeIds.includes(q.id),
+			uniqueMistakeIds.includes(String(q.id)),
 		);
 
 		// 4. Перемішуємо їх
@@ -272,6 +272,7 @@ const Quiz = forwardRef((props, ref) => {
 					onLogin={handleLogin}
 					onLogout={handleLogout}
 					onGoToProfile={() => setQuizState("profile")}
+					history={history}
 				/>
 			</>
 		);
