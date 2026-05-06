@@ -1,3 +1,4 @@
+import { Toaster } from "react-hot-toast";
 import { useState, useEffect, useRef } from "react";
 import Quiz from "./components/Quiz";
 import "./App.css";
@@ -26,12 +27,9 @@ function App() {
 
 	return (
 		<div className="app-container">
+			<Toaster position="top-center" reverseOrder={false} />
 			<header className="app-header">
-				<h1
-					onClick={goHome}
-					style={{ cursor: "pointer" }}
-					title="На головну"
-				>
+				<h1 onClick={goHome} style={{ cursor: "pointer" }} title="На головну">
 					🏛️ БЕБ Тренажер
 				</h1>
 				<button className="theme-toggle" onClick={toggleTheme}>

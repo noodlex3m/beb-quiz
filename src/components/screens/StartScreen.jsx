@@ -1,3 +1,4 @@
+import toast from "react-hot-toast";
 import React from "react";
 import { CATEGORY_TARGETS } from "../../data/categoriesConfig";
 
@@ -74,7 +75,11 @@ function StartScreen({
 					)}
 
 					{/* РЕЙТИНГ НАЙКРАЩИХ (доступно всім) */}
-					<button className="stats-btn leaderboard-btn" onClick={onGoToLeaderboard} style={{ marginTop: '10px', background: 'var(--card-bg)' }}>
+					<button
+						className="stats-btn leaderboard-btn"
+						onClick={onGoToLeaderboard}
+						style={{ marginTop: "10px", background: "var(--card-bg)" }}
+					>
 						🏆 Рейтинг найкращих
 					</button>
 				</div>
@@ -95,7 +100,7 @@ function StartScreen({
 									if (user) {
 										onStart(cat.title);
 									} else {
-										alert(
+										toast.error(
 											"Будь ласка, авторизуйтесь, щоб проходити тестування.",
 										);
 									}

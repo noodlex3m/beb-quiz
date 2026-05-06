@@ -1,3 +1,4 @@
+import toast from "react-hot-toast";
 import { useState, useEffect, forwardRef, useImperativeHandle } from "react";
 import { CATEGORY_TARGETS } from "../data/categoriesConfig";
 import StartScreen from "./screens/StartScreen";
@@ -89,7 +90,7 @@ const Quiz = forwardRef((props, ref) => {
 			await signInWithPopup(auth, provider);
 		} catch (error) {
 			console.error("Помилка під час входу:", error);
-			alert("Не вдалося увійти. Спробуйте ще раз.");
+			toast.error("Не вдалося увійти. Спробуйте ще раз.");
 		}
 	};
 
@@ -97,8 +98,9 @@ const Quiz = forwardRef((props, ref) => {
 	const handleLogout = async () => {
 		try {
 			await signOut(auth);
-		} catch (error) {
-			console.error("Помилка під час виходу:", error);
+			toast.success("Ви успішно вийшли з акаунту!");
+		} catch {
+			toast.error("Помилка під час виходу:");
 		}
 	};
 
@@ -116,7 +118,7 @@ const Quiz = forwardRef((props, ref) => {
 				(q) => q.category === categoryName,
 			);
 			if (sourceQuestions.length === 0) {
-				alert(`У категорії "${categoryName}" ще немає питань!`);
+				toast.error(`У категорії "${categoryName}" ще немає питань!`);
 				return;
 			}
 		}
@@ -166,7 +168,7 @@ const Quiz = forwardRef((props, ref) => {
 
 		// 6. Якщо помилок немає взагалі
 		if (mistakeQuestions.length === 0) {
-			alert("У вас ще немає збережених помилок! Пройдіть звичайний іспит.");
+			toast.error("У вас ще немає збережених помилок! Пройдіть звичайний іспит.");
 			return;
 		}
 

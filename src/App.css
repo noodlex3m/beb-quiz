@@ -1001,3 +1001,14 @@ body {
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 	border-color: #ff9800;
 }
+
+ @ k e y f r a m e s   f a d e I n   { 
+ 	 f r o m   {   o p a c i t y :   0 ;   t r a n s f o r m :   t r a n s l a t e Y ( 1 0 p x ) ;   } 
+ 	 t o   {   o p a c i t y :   1 ;   t r a n s f o r m :   t r a n s l a t e Y ( 0 ) ;   } 
+ } 
+ 
+ . s t a r t - s c r e e n ,   . q u i z - c o n t a i n e r ,   . r e s u l t - s c r e e n ,   . p r o f i l e - s c r e e n   { 
+ 	 a n i m a t i o n :   f a d e I n   0 . 4 s   e a s e - o u t   f o r w a r d s ; 
+ } 
+  
+ 
