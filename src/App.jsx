@@ -27,7 +27,7 @@ function App() {
 	};
 
 	return (
-		<HelmetProvider>
+		<>
 			<Helmet>
 				<meta
 					name="description"
@@ -53,7 +53,7 @@ function App() {
 					<Quiz ref={quizRef} />
 				</main>
 			</div>
-		</HelmetProvider>
+		</>
 	);
 }
 
