@@ -40,7 +40,7 @@ function StartScreen({
 							</div>
 
 							<button className="start-btn" onClick={onStart}>
-								Почати іспит (100 питань)
+								Почати іспит (30 питань)
 							</button>
 
 							{history &&

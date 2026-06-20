@@ -20,6 +20,8 @@ import {
 	onAuthStateChanged,
 } from "firebase/auth";
 
+const QUESTIONS_LIMIT = 30;
+
 const Quiz = forwardRef((props, ref) => {
 	const [quizState, setQuizState] = useState("start"); // "start", "playing", "result"
 	const [examQuestions, setExamQuestions] = useState([]);
@@ -123,11 +125,11 @@ const Quiz = forwardRef((props, ref) => {
 			}
 		}
 
-		// Обираємо 100 рандомних питань
+		// Обираємо рандомні питання відповідно до ліміту
 		const shuffledAll = shuffleArray(sourceQuestions);
-		const selected100 = shuffledAll.slice(0, 100);
+		const selectedQuestions = shuffledAll.slice(0, QUESTIONS_LIMIT);
 
-		setExamQuestions(selected100);
+		setExamQuestions(selectedQuestions);
 		setCurrentQuestionIndex(0);
 		setScore(0);
 		setWrongAnswers([]);
@@ -135,8 +137,8 @@ const Quiz = forwardRef((props, ref) => {
 		setIsChecking(false);
 		setQuizState("playing");
 
-		if (selected100.length > 0) {
-			setShuffledOptions(shuffleArray(selected100[0].options));
+		if (selectedQuestions.length > 0) {
+			setShuffledOptions(shuffleArray(selectedQuestions[0].options));
 		}
 	};
 
@@ -161,9 +163,9 @@ const Quiz = forwardRef((props, ref) => {
 		// 4. Перемішуємо їх
 		mistakeQuestions = shuffleArray(mistakeQuestions);
 
-		// 5. Якщо помилок більше 100, беремо тільки перші 100
-		if (mistakeQuestions.length > 100) {
-			mistakeQuestions = mistakeQuestions.slice(0, 100);
+		// 5. Якщо помилок більше встановленого ліміту, беремо тільки перші
+		if (mistakeQuestions.length > QUESTIONS_LIMIT) {
+			mistakeQuestions = mistakeQuestions.slice(0, QUESTIONS_LIMIT);
 		}
 
 		// 6. Якщо помилок немає взагалі
